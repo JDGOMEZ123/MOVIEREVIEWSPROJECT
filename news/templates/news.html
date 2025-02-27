@@ -1,0 +1,39 @@
+<head>  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+ 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Noticias</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4">Últimas Noticias</h1>
+        {% for article in news %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-12"> <!-- Se usa toda la columna sin imagen -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.headline }}</h5>
+                            <p class="card-text">{{ article.body }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">Publicado el {{ article.date }}</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No hay noticias disponibles.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
