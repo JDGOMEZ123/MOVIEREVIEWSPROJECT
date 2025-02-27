@@ -1,3 +1,30 @@
+{% extends 'base.html' %}
+{% block content%}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center mt-4">🎬 Movie Finder</h1>
+    
+        <!-- Search Form -->
+        <div class="search-box">
+            <form action="" method="GET">
+                <div class="mb-3">
+                    <label for="searchMovie" class="form-label">Search for a Movie:</label>
+                    <input type="text" class="form-control" name="searchMovie" id="searchMovie" placeholder="Enter movie title...">
+                </div>
+                <button type="submit" class="btn btn-custom w-100">Search</button>
+            </form>
+        </div>
+    
+        {% if searchTerm %}
+            <p class="text-center">Results for: <strong>{{ searchTerm }}</strong></p>
+        {% endif %}
+    
+        <!-- Movie Cards -->
+        <div class="row">
+            {% for movie in movies %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="movie-card
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,8 +108,7 @@
         {% if searchTerm %}
             <p class="text-center">Results for: <strong>{{ searchTerm }}</strong></p>
         {% endif %}
-   
-
+    
         <!-- Movie Cards -->
         <div class="row">
             {% for movie in movies %}
@@ -96,8 +122,10 @@
 
                         <div class="movie-details">
                             <h4>{{ movie.title }}</h4>
+                            <p><strong>Genre:</strong> {{ movie.genre }}</p>
+                            <p><strong>Year:</strong> {{ movie.year }}</p>
                             <p>{{ movie.description|truncatechars:100 }}</p>
-
+                            
                             {% if movie.url %}
                                 <a href="{{ movie.url }}" target="_blank" class="btn btn-custom w-100">Watch Now</a>
                             {% endif %}
