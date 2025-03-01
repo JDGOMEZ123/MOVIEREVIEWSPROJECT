@@ -23,11 +23,9 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-from django.shortcuts import render
-import matplotlib.pyplot as plt
-import io
-import base64
-from .models import Movie
+def signup(request):
+    email = request.GET.get('email')
+    return render(request, 'signup.html', {'email': email})
 
 def statistics_view(request):
     matplotlib.use('Agg')  # Usar backend sin interfaz gráfica
